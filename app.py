@@ -35,9 +35,9 @@ def upload():
             print("File supported moving on...")
         else:
             render_template("Error.html", message="Files uploaded are not supported...")
-#this is my code to split and merge image which is uploaded.only issue i m facing what to pass in split()            
-    #b, g, r = cv2.split(filename)    
-    #cv2.imshow('image',b)
+           
+            
+    
     #cv2.waitKey(0)
     #cv2.imshow('image',g)
     #cv2.waitKey(0)
@@ -49,9 +49,16 @@ def upload():
 
 
         destination = "/".join([target, filename])
+        
         print("Accept incoming file:", filename)
         print("Save it to:", destination)
         upload.save(destination)
+
+
+        img=cv2.imread(destination)
+        b, g, r = cv2.split(img)
+        #how to write b component of image or show s
+        #cv2.imshow('image',b)
 
         
 
