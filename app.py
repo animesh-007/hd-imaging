@@ -3,6 +3,9 @@ import os
 from flask import Flask, request, render_template, send_from_directory
 import cv2
 import glob
+import jsonify
+import numpy as np
+import json
 
 
 __author__ = 'animesh'
@@ -20,51 +23,64 @@ def index():
 @app.route("/upload", methods=["POST"])
 def upload():
     
-    target = os.path.join(APP_ROOT, 'images/')
-    print(target)
-    if not os.path.isdir(target):
-        os.mkdir(target)
-    print(request.files.getlist("file"))
-    for upload in request.files.getlist("file"):
-        print(upload)
-        print("{} is the file name".format(upload.filename))
-        filename = upload.filename
-        # This is to verify files are supported
-        ext = os.path.splitext(filename)[1]
-        if (ext == ".jpg") or (ext == ".png"):
-            print("File supported moving on...")
-        else:
-            render_template("Error.html", message="Files uploaded are not supported...")
+    # target = os.path.join(APP_ROOT, 'images/')
+    # print(target)
+    # if not os.path.isdir(target):
+    #     os.mkdir(target)
+    # print(request.files.getlist("file"))
+    # for upload in request.files.getlist("file"):
+    #     print(upload)
+    #     print("{} is the file name".format(upload.filename))
+    #     filename = upload.filename
+    #     # This is to verify files are supported
+    #     ext = os.path.splitext(filename)[1]
+    #     if (ext == ".jpg") or (ext == ".png"):
+    #         print("File supported moving on...")
+    #     else:
+    #         render_template("Error.html", message="Files uploaded are not supported...")
            
             
     
-    #cv2.waitKey(0)
-    #cv2.imshow('image',g)
-    #cv2.waitKey(0)
-    #cv2.imshow('image',r)
-    #cv2.waitKey(0)
+    
     #image = cv2.merge((b,g,r))
     #cv2.imshow('image111',image)
     #cv2.waitKey(0)
+    filename = "rgb01.png"
+    target="images/"
+
+    destination = "/".join([target, filename])
+    
+    # print("Accept incoming file:", filename)
+    # print("Save it to:", destination)
+    # upload.save(destination)
 
 
-        destination = "/".join([target, filename])
+    img=cv2.imread(destination)
+    b, g, r = cv2.split(img)
+    
+    
+
         
-        print("Accept incoming file:", filename)
-        print("Save it to:", destination)
-        upload.save(destination)
-
-
-        img=cv2.imread(destination)
-        b, g, r = cv2.split(img)
-        #how to write b component of image or show s
-        #cv2.imshow('image',b)
-
-        
-
-
+    # print(g.tolist())
+    r = r.tolist()
+    return json.dumps(r)
+    b = b.tolist()
+    g = g.tolist()
     # return send_from_directory("images", filename, as_attachment=True)
-    return render_template("complete.html", image_name=filename)
+    # return render_template("complete.html", image_name=filename)
+    
+    #return json.dumps({'blue': b, 'green': g, 'red': r}, indent=4, sort_keys=True)
+
+    # return '''{
+    #     "blue": "{}",
+    #     "green": "{}",
+    #     "red": "{}",
+    # }'''.format(str(b), str(g), str(r))
+
+#blue,green,red=upload()
+
+
+# #print(image)
 
 
 @app.route('/upload/<filename>')
