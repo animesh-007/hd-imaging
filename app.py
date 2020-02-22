@@ -63,13 +63,13 @@ def upload():
         
     # print(g.tolist())
     r = r.tolist()
-    return json.dumps(r)
+    
     b = b.tolist()
     g = g.tolist()
     # return send_from_directory("images", filename, as_attachment=True)
     # return render_template("complete.html", image_name=filename)
     
-    #return json.dumps({'blue': b, 'green': g, 'red': r}, indent=4, sort_keys=True)
+    return json.dumps({'blue': b, 'green': g, 'red': r}, indent=4, sort_keys=True)
 
     # return '''{
     #     "blue": "{}",
