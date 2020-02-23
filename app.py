@@ -37,16 +37,8 @@ def upload():
     
     li_b=list(image.getdata(band=2))
 
-<<<<<<< HEAD
-    return json.dumps({'blue': li_b, 'green': li_g, 'red': li_r}, indent=4, sort_keys=True)
-||||||| merged common ancestors
-        
-    
-=======
-        
-    
->>>>>>> a86920fd6271c908ff09e45ff6ba79b9ac093479
 
+    return json.dumps({'blue': li_b, 'green': li_g, 'red': li_r}, indent=4, sort_keys=True)
 
 img = json.loads(upload())
 
