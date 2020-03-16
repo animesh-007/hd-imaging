@@ -2,7 +2,7 @@ Aim : Creating Server which returns image channels R, G, B separately to client 
 
 software used: 
 1.Flask as framework
-2.opencv-python for image handling
+2.opencv-python and numpy for image handling
 
 Initialising: 
 command 'python app.py' to start the server at PORT 4555.
@@ -12,5 +12,7 @@ a web page served at port 4555. pls attach a valid image file and click on chann
 when Upload button is clicked image from uploads directory turned into individual channels and are stored in directory templates/images/splitedcomponents also combined images are also formed which are stored in directory templates/images/combinedimages.
 
 All the operation are done using opencv-python.
+
+Tried to use numpy slicing for spliting image as it is faster approach then split().
 
 Final result are shown using complete.html page

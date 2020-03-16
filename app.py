@@ -52,27 +52,30 @@ def upload():
     cv.imwrite("templates/images/splitedcomponents/imagered.jpg", r)
     cv.imwrite("templates/images/splitedcomponents/imagegreen.jpg", g)
     cv.imwrite("templates/images/splitedcomponents/imageblue.jpg", b)
-    # r=r.save("images/r_image.jpg")
-
-
-    # combining channels into one
-    a = np.ones(b.shape, dtype=b.dtype)*50
-    bg_merge = cv.merge((b,g,a))
-    gr_merge = cv.merge((g,r,a))
-    rb_merge = cv.merge((r,b,a))
-    bgr_merge = cv.merge((b,g,r,a))
-    cv.imwrite("templates/images/combinedimages/imagebg.jpg",bg_merge)
-    cv.imwrite("templates/images/combinedimages/imagegr.jpg",gr_merge)
-    cv.imwrite("templates/images/combinedimages/imagerb.jpg",rb_merge)
-    cv.imwrite("templates/images/combinedimages/imagebgr.jpg", bgr_merge)
     
 
-    return render_template("complete.html",image_name="image.jpg")
+    # combining R,G,B channels into one
+    a = np.ones(b.shape, dtype=b.dtype)*50
+    bgr_merge = cv.merge((b,g,r,a))
+    
+    bg = bgr_merge.copy()
+    bg[:,:,2]=0
+    
+    gr = bgr_merge.copy()
+    gr[:,:,0]=0
+    
+    rb = bgr_merge.copy()
+    rb[:,:,1]=0
 
+    cv.imwrite("templates/images/combinedimages/imagebgr.jpg", bgr_merge)
+    cv.imwrite("templates/images/combinedimages/imagebg.jpg",bg)
+    cv.imwrite("templates/images/combinedimages/imagegr.jpg",gr)
+    cv.imwrite("templates/images/combinedimages/imagerb.jpg",rb)
+    
+    
 
-@app.route("/upload/<filename>")
-def send_image(filename):
-    return send_from_directory("images","image.jpg")
+    return render_template("complete.html")
+
 
 
 
