@@ -35,7 +35,7 @@ git clone https://github.com/animesh-007/hd-imaging.git
 * The image file is saved by sever in a directory at `/images`.
 * When `Upload` button is clicked image from upload directory gets split into individual channels and are stored in directory `templates/images/splitedcomponents` also combined images are also formed which are stored in directory `templates/images/combinedimages`.
 
-* All the operation are done using opencv-python.
+* All the operation are done using OpenCV.
 
 * Tried to use NumPy slicing for spliting image as it is faster approach then split function of OpenCV.
 
