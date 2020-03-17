@@ -1,10 +1,6 @@
 import os
-
 from flask import Flask, request, render_template, send_from_directory
-import jsonify
 import numpy as np
-import json
-from PIL import Image
 import cv2 as cv
 
 
@@ -23,8 +19,7 @@ def index():
 @app.route("/upload", methods=["POST"])
 def upload():
     
-    # filename = "rgb01.png"
-    # target="images/"
+
     target=os.path.join(APP_ROOT,"images/")
     print(target)
 
@@ -40,7 +35,7 @@ def upload():
         file.save(destination)
 
         
-# # #print(image)
+
     image_path = "images/image.jpg"
     image = cv.imread(image_path, 1)
     
