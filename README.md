@@ -7,10 +7,10 @@
 
 ## Prerequisites 
 
-* [Python](https://www.python.org/)
-* [Flask](https://palletsprojects.com/p/flask/)
-* [OpenCV](https://opencv.org/)
-* [NumPy](https://numpy.org/)
+* `Python`
+* `Flask`
+* `Lycon` 
+* `NumPy`
 
 
 ## Installation
