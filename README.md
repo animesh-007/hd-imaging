@@ -6,9 +6,12 @@
 * Client which recombines them to original image.
 
 ## Prerequisites 
+
+* [Python](https://www.python.org/)
 * [Flask](https://palletsprojects.com/p/flask/)
 * [OpenCV](https://opencv.org/)
 * [NumPy](https://numpy.org/)
+
 
 ## Installation
 
