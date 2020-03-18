@@ -2,6 +2,7 @@ import os
 from flask import Flask, request, render_template
 import numpy as np
 import lycon
+import json
 
 
 __author__ = 'animesh'
@@ -45,11 +46,25 @@ def upload():
     g = image[:,:,1]
     b = image[:,:,2]
 
-    return np.array_str(np.array([r,g,b]))
+    r=r.tolist()
+    g=g.tolist()
+    b=b.tolist()
 
+    return json.dumps({'blue':b, 'green':g, 'red':r}, sort_keys=True, indent=4)   
 
-# combining R,G,B channels into one
-combinedimaged = np.dstack((r,g,b))
+def merge():
+
+    img = json.loads(upload())
+    blue=img["blue"]
+    arr_b=np.array(blue,dtype="uint8")
+    
+    red=img["red"]
+    arr_r=np.array(red,dtype="uint8")
+    
+    green=img["green"]
+    arr_g=np.array(green,dtype="uint8")
+
+    combinedimaged = np.dstack((arr_r,arr_g,arr_b))
 
 
 if __name__ == "__main__":
