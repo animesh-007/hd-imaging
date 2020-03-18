@@ -31,14 +31,14 @@ def upload():
     for file in request.files.getlist("file"):
         print(file)
         filename = file.filename   
-        destination = "/".join([target, "image.jpg"])
+        destination = "/".join([target, "image.png"])
         print(destination)
         file.save(destination)
 
         
 
-    image_path = "images/image.jpg"
-    # image = cv2.imread(image_path, 1)
+    image_path = "images/image.png"
+
     image = lycon.load(image_path)
     
     # splitting image into 3 channels
@@ -50,8 +50,10 @@ def upload():
     g=g.tolist()
     b=b.tolist()
 
-    return json.dumps({'blue':b, 'green':g, 'red':r}, sort_keys=True, indent=4)   
+    return json.dumps({'blue':b, 'green':g, 'red':r}, sort_keys=True, indent=4) 
 
+
+@app.route("/merge")
 def merge():
 
     img = json.loads(upload())
@@ -66,6 +68,11 @@ def merge():
 
     combinedimaged = np.dstack((arr_r,arr_g,arr_b))
 
+    lycon.save("templates/images/combinedimages/mergeimage.png",combinedimaged)
+
+    return render_template("merge.html")
+
 
 if __name__ == "__main__":
     app.run(port=4555, debug=True)
+    

@@ -15,6 +15,10 @@
 
 ## Installation
 
+#### Installing Prerequisites 
+
+pip install Flask lycon numpy
+
 #### Cloning the repository
 
 To clone the repository
@@ -31,11 +35,12 @@ git clone https://github.com/animesh-007/hd-imaging.git
 
 
 ## Workflow:
+
 * A webpage served at port 4555.Please attach a valid image file and click on `upload`.
 * The image file is saved by sever in a directory at `/images`.
 * When `Upload` button is clicked image from upload directory gets split into individual channels and are return to client using json.dump(). 
 * merge function is used to combine each channels together to form original image.
-
+* merge image can be seen on `http://localhost:4555/merge`
 * All the operation are done using Lycon.
 
 * Tried to use NumPy slicing for spliting image as it is faster approach then split function of OpenCV.
