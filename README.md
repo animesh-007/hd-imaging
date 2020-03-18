@@ -17,7 +17,7 @@
 
 #### Installing Prerequisites 
 
-pip install Flask lycon numpy
+`pip install Flask lycon numpy`
 
 #### Cloning the repository
 
