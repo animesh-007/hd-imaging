@@ -7,7 +7,7 @@
 
 ## Prerequisites 
 
-* `Python`
+* `Python` version 2.7 or 3.5
 * `Flask`
 * `Lycon` 
 * `NumPy`
@@ -33,10 +33,9 @@ git clone https://github.com/animesh-007/hd-imaging.git
 ## Workflow:
 * A webpage served at port 4555.Please attach a valid image file and click on `upload`.
 * The image file is saved by sever in a directory at `/images`.
-* When `Upload` button is clicked image from upload directory gets split into individual channels and are stored in directory `templates/images/splitedcomponents` also combined images are also formed which are stored in directory `templates/images/combinedimages`.
+* When `Upload` button is clicked image from upload directory gets split into individual channels and are return to client using json.dump(). 
+* merge function is used to combine each channels together to form original image.
 
-* All the operation are done using OpenCV.
+* All the operation are done using Lycon.
 
 * Tried to use NumPy slicing for spliting image as it is faster approach then split function of OpenCV.
-
-* Final results are shown using `http://localhost:4555/complete.html` page
