@@ -19,6 +19,11 @@
 
 `pip install Flask lycon numpy`
 
+#### Ubuntu
+Single-line command for installing all dependencies: 
+
+`sudo apt-get install cmake build-essential libjpeg-dev libpng-dev`
+
 #### Cloning the repository
 
 To clone the repository
@@ -42,5 +47,3 @@ git clone https://github.com/animesh-007/hd-imaging.git
 * merge function is used to combine each channels together to form original image.
 * merge image can be seen on `http://localhost:4555/merge`
 * All the operation are done using Lycon.
-
-* Tried to use NumPy slicing for spliting image as it is faster approach then split function of OpenCV.
