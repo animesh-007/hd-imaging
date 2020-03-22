@@ -15,14 +15,14 @@
 
 ## Installation
 
-#### Installing Prerequisites 
-
-`pip install Flask lycon numpy`
-
 #### Ubuntu
 Single-line command for installing all dependencies: 
 
 `sudo apt-get install cmake build-essential libjpeg-dev libpng-dev`
+
+#### Installing Prerequisites 
+
+`pip install Flask lycon numpy`
 
 #### Cloning the repository
 
